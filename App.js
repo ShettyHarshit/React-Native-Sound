@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
 import { StackNavigator } from 'react-navigation'; // Version can be specified in package.json
+import AudioExample from './Record.js';
 
 class HomeScreen extends React.Component {
   render() {
@@ -10,6 +11,10 @@ class HomeScreen extends React.Component {
         <Button
           title="Go to Details"
           onPress={() => this.props.navigation.navigate('Details')}
+        />
+        <Button
+          title="Go to Record"
+          onPress={() => this.props.navigation.navigate('Record')}
         />
       </View>
     );
@@ -21,18 +26,7 @@ class DetailsScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Details Screen</Text>
-        <Button
-          title="Go to Details... again"
-          onPress={() => this.props.navigation.push('Details')}
-        />
-        <Button
-          title="Go to Home"
-          onPress={() => this.props.navigation.navigate('Home')}
-        />
-        <Button
-          title="Go back"
-          onPress={() => this.props.navigation.goBack()}
-        />
+        <Text>React Native</Text>
       </View>
     );
   }
@@ -45,6 +39,9 @@ const RootStack = StackNavigator(
     },
     Details: {
       screen: DetailsScreen,
+    },
+    Record: {
+      screen: AudioExample,
     },
   },
   {
