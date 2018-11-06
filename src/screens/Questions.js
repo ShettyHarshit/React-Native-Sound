@@ -6,7 +6,7 @@ class QuestionList extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { test: 'Hello',
+        this.state = { 
         questions: [
             {
                 type : 'mcq',
@@ -36,11 +36,10 @@ class QuestionList extends React.Component {
      render() {
          return (
              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Questions at 1.30 </Text>
+                 <Text>Questions</Text>
                 {_.map(this.state.questions,
 
                     question => {
-                        {/* <Text>{ this.state.test }</Text> */}
                         if(question.type == 'mcq'){
                             return <Button
                                 title="Answer this question"
@@ -57,16 +56,8 @@ class QuestionList extends React.Component {
                                 onPress={() => this.props.navigation.navigate('Record')}
                             />
                         }
-                        else {
-                            <Text>{ question }</Text>
-
-                        }
                     }
                 )}
-                            <Text>{ this.state.test }</Text>
-                            {/* <Text>{ this.state.questions }</Text> */}
-
-
             </View>
         );
     }

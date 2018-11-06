@@ -3,6 +3,7 @@ import { Button, View, Text } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import QuestionList from './src/screens/Questions.js';
 import MCQ from './src/screens/MCQ';
+import AudioExample from './src/screens/Record'
 
 class HomeScreen extends React.Component {
   render() {
@@ -45,7 +46,10 @@ const RootStack = StackNavigator(
       screen: QuestionList,
     },
     MCQ : {
-      screen: MCQ
+      screen: MCQ,
+    },
+    Record : {
+      screen: AudioExample,
     }
   },
   {
