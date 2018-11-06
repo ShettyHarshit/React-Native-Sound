@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, View, Text } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import QuestionList from './src/screens/Questions.js';
+import MCQ from './src/screens/MCQ';
 
 class HomeScreen extends React.Component {
   render() {
@@ -43,6 +44,9 @@ const RootStack = StackNavigator(
     Questions: {
       screen: QuestionList,
     },
+    MCQ : {
+      screen: MCQ
+    }
   },
   {
     initialRouteName: 'Home',

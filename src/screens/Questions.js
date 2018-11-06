@@ -6,11 +6,12 @@ class QuestionList extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { questions: [
+        this.state = { test: 'Hello',
+        questions: [
             {
                 type : 'mcq',
                 id: 1,
-                text: 'What is the capita of India?',
+                text: 'What is the capital of India?',
                 image: 'null',
                 options: [
                     'Mumbai',
@@ -29,19 +30,21 @@ class QuestionList extends React.Component {
                 }
             }
         ] };
-
+        
      }
+     
+     render() {
+         return (
+             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>Questions at 1.30 </Text>
+                {_.map(this.state.questions,
 
-    render() {
-        return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Questions</Text>
-                {_.map(this.state.questions, 
                     question => {
+                        {/* <Text>{ this.state.test }</Text> */}
                         if(question.type == 'mcq'){
-                            <Button
+                            return <Button
                                 title="Answer this question"
-                                onPress={() => this.props.navigation.navigate('Record',
+                                onPress={() => this.props.navigation.navigate('MCQ',
                                 {
                                     text : question.text,
                                     options: question.options        
@@ -49,13 +52,19 @@ class QuestionList extends React.Component {
                             />
                         }
                         else if (question.type == 'audio'){
-                            <Button
+                            return <Button
                                 title="Record this question"
                                 onPress={() => this.props.navigation.navigate('Record')}
                             />
                         }
+                        else {
+                            <Text>{ question }</Text>
+
+                        }
                     }
                 )}
+                            <Text>{ this.state.test }</Text>
+                            {/* <Text>{ this.state.questions }</Text> */}
 
 
             </View>
