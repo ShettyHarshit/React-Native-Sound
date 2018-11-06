@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
-import { StackNavigator } from 'react-navigation'; // Version can be specified in package.json
-import AudioExample from './Record.js';
+import { StackNavigator } from 'react-navigation';
+import QuestionList from './src/screens/Questions.js';
 
 class HomeScreen extends React.Component {
   render() {
@@ -13,8 +13,8 @@ class HomeScreen extends React.Component {
           onPress={() => this.props.navigation.navigate('Details')}
         />
         <Button
-          title="Go to Record"
-          onPress={() => this.props.navigation.navigate('Record')}
+          title="Questions"
+          onPress={() => this.props.navigation.navigate('Questions')}
         />
       </View>
     );
@@ -40,8 +40,8 @@ const RootStack = StackNavigator(
     Details: {
       screen: DetailsScreen,
     },
-    Record: {
-      screen: AudioExample,
+    Questions: {
+      screen: QuestionList,
     },
   },
   {
