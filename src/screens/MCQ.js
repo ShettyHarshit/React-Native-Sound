@@ -21,6 +21,14 @@ class MCQ extends React.Component {
                         
                     }
                 )}
+                <Button
+                    title="Save"
+                    onPress={() => this.props.navigation.navigate('Questions',
+                        {
+                            // id: question.id,
+                            // answer: question.response
+                        })}
+                />
 
 
             </View>
