@@ -18,7 +18,8 @@ class QuestionList extends React.Component {
                     'Bangalore',
                     'Chennai',
                     'New Delhi'
-                ]
+                ],
+                answer: ''
             },
             {
                 type : 'audio',
@@ -27,7 +28,8 @@ class QuestionList extends React.Component {
                 image: 'null',
                 options: {
                     maxLength : '30'
-                }
+                },
+                answer: ''
             }
         ] };
         
