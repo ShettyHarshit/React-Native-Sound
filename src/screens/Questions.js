@@ -47,6 +47,7 @@ class QuestionList extends React.Component {
                                 title="Answer this question"
                                 onPress={() => this.props.navigation.navigate('MCQ',
                                 {
+                                    id : question.id,
                                     text : question.text,
                                     options: question.options        
                                 })}

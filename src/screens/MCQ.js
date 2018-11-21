@@ -1,14 +1,18 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
 import _ from 'lodash';
+import { global } from '../global';
 
 class MCQ extends React.Component {
 
-    
+    saveAndExit  = () => {
+        this.props.navigation.navigate('Questions')
+    }
 
     render() {
 
         const { navigation } = this.props;
+        const questionId = navigation.getParam('id', 'NO-ID');
         const questionTitle = navigation.getParam('text', 'NO-ID');
         const questionOptions = navigation.getParam('options', 'default');
         return (
@@ -23,11 +27,7 @@ class MCQ extends React.Component {
                 )}
                 <Button
                     title="Save"
-                    onPress={() => this.props.navigation.navigate('Questions',
-                        {
-                            // id: question.id,
-                            // answer: question.response
-                        })}
+                    onPress={() => this.saveAndExit()}
                 />
 
 
