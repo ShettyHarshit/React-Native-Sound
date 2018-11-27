@@ -11,7 +11,7 @@ class MCQ extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isChecked : false,
+            isChecked : [false, false, false, false],
              
         }
     }
@@ -20,6 +20,15 @@ class MCQ extends React.Component {
     saveAndExit  = (id, ans) => {
         // global.answer = ans;
         this.props.navigation.navigate('Questions')
+    }
+
+    updateCheckers = (index, option) => {
+        let temp = this.state.isChecked;
+        temp[index] = !temp[index];
+        this.setState({
+            isChecked: temp,
+            selectedValue: option
+        });
     }
     
     render() {
@@ -39,17 +48,14 @@ class MCQ extends React.Component {
                         <Text>{questionTitle}</Text>
                         <Text>Options</Text>
                         {_.map(questionOptions,
-                            option => {
+                            (option, index) => {
                                 return <React.Fragment>
                                 <CheckBox
                                 style={{ width: 170 }}
                                 onClick={() => {
-                                    this.setState({
-                                        isChecked: !this.state.isChecked,
-                                        selectedValue : option
-                                    });
+                                    this.updateCheckers(index, option);
                                 }}
-                                isChecked={this.state.isChecked}
+                                isChecked={this.state.isChecked[index]}
                                 leftText={option}
                                 />
                                 </React.Fragment>
