@@ -4,21 +4,24 @@ import { StackNavigator } from 'react-navigation';
 import QuestionList from './src/screens/Questions.js';
 import MCQ from './src/screens/MCQ';
 import AudioExample from './src/screens/Record'
+import { AppProvider } from './context/appContext.js';
 
 class HomeScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
-        <Button
-          title="Questions"
-          onPress={() => this.props.navigation.navigate('Questions')}
-        />
-      </View>
+    <AppProvider>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text>Home Screen</Text>
+          <Button
+            title="Go to Details"
+            onPress={() => this.props.navigation.navigate('Details')}
+          />
+          <Button
+            title="Questions"
+            onPress={() => this.props.navigation.navigate('Questions')}
+          />
+        </View>
+    </AppProvider>
     );
   }
 }
@@ -59,6 +62,8 @@ const RootStack = StackNavigator(
 
 export default class App extends React.Component {
   render() {
-    return <RootStack />;
+    return <AppProvider>
+      <RootStack />
+    </AppProvider>;
   }
 }
