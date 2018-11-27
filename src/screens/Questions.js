@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
 import _ from 'lodash'; 
+import { AppProvider, AppConsumer } from '../../context/appContext';
 
 class QuestionList extends React.Component {
 
@@ -30,6 +31,19 @@ class QuestionList extends React.Component {
                     maxLength : '30'
                 },
                 answer: ''
+            },
+            {
+                type: 'mcq',
+                id: 3,
+                text: 'What is the capital of India?',
+                image: 'null',
+                options: [
+                    'Mumbai',
+                    'Bangalore',
+                    'Chennai',
+                    'New Delhi'
+                ],
+                answer: ''
             }
         ] };
         
@@ -37,31 +51,46 @@ class QuestionList extends React.Component {
      
      render() {
          return (
-             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                 <Text>Questions</Text>
-                {_.map(this.state.questions,
+            //  <AppProvider>
 
-                    question => {
-                        if(question.type == 'mcq'){
-                            return <Button
-                                title="Answer this question"
-                                onPress={() => this.props.navigation.navigate('MCQ',
-                                {
-                                    id : question.id,
-                                    text : question.text,
-                                    options: question.options        
-                                })}
-                            />
-                        }
-                        else if (question.type == 'audio'){
-                            return <Button
-                                title="Record this question"
-                                onPress={() => this.props.navigation.navigate('Record')}
-                            />
-                        }
-                    }
-                )}
-            </View>
+                 <AppConsumer>
+                     {
+                         (context) => (
+                             <View style={{
+                                 flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                                 <Text>Questions</Text>
+                                 {/* <Text>{ context.answer }</Text> */}
+                                 {_.map(this.state.questions,
+
+                                     question => {
+                                         if (question.type == 'mcq') {
+                                             return <React.Fragment style={{ paddingHorizontal: 10, paddingVertical: 10 }}>
+                                             <Text>{ question.text }</Text>
+                                             <Text>{ context.answer[question.id] }</Text>
+                                             <Button
+                                                 title="Answer this question"
+                                                 onPress={() => this.props.navigation.navigate('MCQ',
+                                                     {
+                                                         id: question.id,
+                                                         text: question.text,
+                                                         options: question.options
+                                                     })}
+                                             />
+                                             </React.Fragment>
+                                         }
+                                         else if (question.type == 'audio') {
+                                             return <Button
+                                                 title="Record this question"
+                                                 onPress={() => this.props.navigation.navigate('Record')}
+                                             />
+                                         }
+                                     }
+                                 )}
+                             </View>
+                         )
+                     }
+                     </AppConsumer>
+                // </AppProvider>
         );
     }
 }
