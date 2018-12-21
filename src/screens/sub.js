@@ -15,7 +15,6 @@ class sub extends React.Component {
         const { navigation } = this.props;
         const questionId = navigation.getParam('id', 'NO-ID');
         const questionTitle = navigation.getParam('text', 'NO-ID');
-        let answer = '';
         return (
             // <AppProvider>
                 

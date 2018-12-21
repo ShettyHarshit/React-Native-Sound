@@ -94,7 +94,10 @@ class QuestionList extends React.Component {
                                          else if(question.type == 'sub'){
                                              return <Button
                                                 title="Answer Subjective question"
-                                                onPress= {()=> this.props.navigation.navigate('sub')}
+                                                onPress= {()=> this.props.navigation.navigate('sub',{
+                                                   id: question.id,
+                                                   text: question.text 
+                                                })}
                                              >
 
                                              </Button>
