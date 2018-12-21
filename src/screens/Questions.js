@@ -44,7 +44,14 @@ class QuestionList extends React.Component {
                     'New Delhi'
                 ],
                 answer: ''
+            },
+            {
+                type:'sub',
+                id:4,
+                text: 'Why do you want to join ?',
+                answer:''
             }
+            
         ] };
         
      }
@@ -83,6 +90,14 @@ class QuestionList extends React.Component {
                                                  title="Record this question"
                                                  onPress={() => this.props.navigation.navigate('Record')}
                                              />
+                                         }
+                                         else if(question.type == 'sub'){
+                                             return <Button
+                                                title="Answer Subjective question"
+                                                onPress= {()=> this.props.navigation.navigate('sub')}
+                                             >
+
+                                             </Button>
                                          }
                                      }
                                  )}
