@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, TextInput } from 'react-native';
+import { Button, View, Text, TextInput, StyleSheet } from 'react-native';
 import _ from 'lodash';
 import { AppProvider, AppConsumer } from '../../context/appContext';
 
@@ -24,7 +24,7 @@ class sub extends React.Component {
                         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                         <Text>{questionTitle}</Text>
                         <Text>Answer:</Text>
-                        <TextInput 
+                        <TextInput style={styles.input} 
                             onChangeText={(text) => this.setState({answer:text})}
                         />
                         
@@ -47,4 +47,16 @@ class sub extends React.Component {
                 }
     
 }
+
+const styles = StyleSheet.create({
+    input: {
+      height: 40,
+      borderColor: '#000000',
+      borderWidth: 1,
+      width : 250,
+      margin : 10
+   },
+  })
+
+
 export default sub;
