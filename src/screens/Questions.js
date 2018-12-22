@@ -140,13 +140,21 @@ class QuestionList extends React.Component {
                                              </React.Fragment>
                                          }
                                          else if (question.type == 'audio') {
-                                             return <Button
+                                             return <React.Fragment style={{ paddingHorizontal: 10, paddingVertical: 10 }}>
+                                                <Text>{ question.text }</Text>
+                                                <Button
                                                  title="Record this question"
-                                                 onPress={() => this.props.navigation.navigate('Record')}
+                                                 onPress={() => this.props.navigation.navigate('Record',{
+                                                     id : question.id,
+                                                     text : question.text
+                                                 })}
                                              />
+                                             </React.Fragment>
                                          }
                                          else if(question.type == 'sub'){
-                                             return <Button
+                                             return <React.Fragment style={{ paddingHorizontal: 10, paddingVertical: 10 }}>
+                                             <Text>{ question.text }</Text>
+                                             <Button
                                                 title="Answer Subjective question"
                                                 onPress= {()=> this.props.navigation.navigate('sub',{
                                                    id: question.id,
@@ -155,6 +163,7 @@ class QuestionList extends React.Component {
                                              >
 
                                              </Button>
+                                             </React.Fragment>
                                          }
                                      }
                                  )}
